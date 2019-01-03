@@ -1,6 +1,8 @@
 <template>
   <div class="hello">
+    <button @click="countAdd(number )">点我</button>
     <h1>{{ msg }}</h1>
+    {{number}}{{zlj}}{{age}}
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -34,11 +36,119 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Watch, Emit, Vue } from "vue-property-decorator";
 
-@Component
+interface objValidate{
+    name:String; //string
+    count: String | Number; //string或者number
+    age?:Number;//age 被定义为可选属性，那么在传对象的时候age就可有可无。
+    readonly sex:Boolean;//只读属性，一旦被赋值，不能修改
+}
+
+@Component({
+    components:{}
+})
 export default class HelloWorld extends Vue {
-  @Prop() private msg!: string;
+    //接收父组件的参数
+  @Prop(String) msg!: string;
+  @Prop(String) zlj!: string;
+  @Prop(Number) age!: number;
+
+
+  info: String = 'hello'
+  number: number  = 3
+  count: string = '纳尼+'
+  arr: number[] = [2,7,3,8,5,9,2,6,3]
+
+  //属性监听
+  @Watch ('number')
+  onNumberChanged(val: string, oldVal: string) {
+      console.log(`number:${val}`)
+
+  }
+  //属性监听
+  @Watch ('count')
+  onCountChanged(val: string, oldVal: string):void {
+        console.log(`count:${val}`)
+
+    }
+  // methods
+  //3.0向父组件传值
+  @Emit('countAdd')
+  countAdd(number: number):void {
+      this.number++
+      this.count+=this.count
+      let obj = {
+          name:'孙章',
+          count:1,
+          age:3.04,
+          sex:true
+      }
+      this.changeObj(obj);
+      // this.number++
+      //2.0向父组件传值
+      // this.$emit('onHelloClick',this.number);
+  }
+  //生命周期
+  created() {
+      console.log(`created`)
+  }
+  mounted() {
+      // console.log(`mounted`)
+      // console.log(Number.isFinite(this.age))//判断是不是数字
+      // console.log(Number.isNaN(this.age))//判断是不是NaN
+      // console.log(Number.isInteger(this.age))//判断是不是整数
+      // console.log(Number.parseInt(this.count))//整数转化
+      // console.log(Number.parseFloat(this.count))//浮点类型转化
+      // console.log(Number.isSafeInteger(this.age))//判断是不是数字
+
+
+      //数组排序去重
+      // this.arr = [...new Set(this.arr)]
+      // console.log(Array.from(this.arr.sort()))
+
+
+
+      // let hash = {};
+      // let config = [{
+      //     name: 2,
+      //     state: true,
+      //     output: 'Y',
+      // }, {
+      //     name: 3,
+      //     state: false,
+      //     output: 'A',
+      // }, {
+      //     name: 5,
+      //     state: true,
+      //     output: 'S',
+      // }, {
+      //     name: 7,
+      //     state: true,
+      //     output: 'B',
+      // }];
+      //
+      // config = [...config, {
+      //     name: 3,
+      //     state: true,
+      //     output: 'D',
+      // }]
+      // const newArr = config.reduce((item, next) => {
+      //     hash[next.name] ? '' : next.state == true && item.push(next);
+      //     return item
+      // }, []);
+      //
+      // console.log(newArr);
+  }
+  //私有方法
+  private changeObj(obj:objValidate):void{
+      // console.log(this.number)
+      // console.log(obj.name);
+      // console.log(obj.count);
+      obj.name = 'zhanglongji';
+      console.log(obj)
+  }
+
 }
 </script>
 
