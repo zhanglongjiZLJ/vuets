@@ -60,7 +60,7 @@ export default class HelloWorld extends Vue {
   @Prop(String) zlj!: string;
   @Prop(Number) age!: number;
 
-
+  //data数据
   info: String = 'hello'
   number: number  = 3
   count: string = '纳尼+'
@@ -100,6 +100,7 @@ export default class HelloWorld extends Vue {
       console.log(`created`)
   }
   mounted() {
+      console.log(this.age)
       // console.log(`mounted`)
       // console.log(Number.isFinite(this.age))//判断是不是数字
       // console.log(Number.isNaN(this.age))//判断是不是NaN
