@@ -2,7 +2,7 @@
   <div class="hello">
     <button @click="countAdd(number )">点我</button>
     <h1>{{ msg }}</h1>
-    {{number}}{{zlj}}{{age}}
+    <h2>{{number}}{{zlj}}{{age}}</h2>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -43,6 +43,12 @@ interface objValidate{
     count: String | Number; //string或者number
     age?:Number;//age 被定义为可选属性，那么在传对象的时候age就可有可无。
     readonly sex:Boolean;//只读属性，一旦被赋值，不能修改
+}
+
+interface ItemObj {
+    name: number;
+    state: boolean;
+    output: string;
 }
 
 @Component({
@@ -109,36 +115,40 @@ export default class HelloWorld extends Vue {
 
 
 
-      // let hash = {};
-      // let config = [{
-      //     name: 2,
-      //     state: true,
-      //     output: 'Y',
-      // }, {
-      //     name: 3,
-      //     state: false,
-      //     output: 'A',
-      // }, {
-      //     name: 5,
-      //     state: true,
-      //     output: 'S',
-      // }, {
-      //     name: 7,
-      //     state: true,
-      //     output: 'B',
-      // }];
-      //
-      // config = [...config, {
-      //     name: 3,
-      //     state: true,
-      //     output: 'D',
-      // }]
-      // const newArr = config.reduce((item, next) => {
-      //     hash[next.name] ? '' : next.state == true && item.push(next);
-      //     return item
-      // }, []);
-      //
-      // console.log(newArr);
+
+      let config:ItemObj[] = [{
+          name: 2,
+          state: true,
+          output: 'Y',
+      }, {
+          name: 3,
+          state: false,
+          output: 'A',
+      }, {
+          name: 5,
+          state: true,
+          output: 'S',
+      }, {
+          name: 7,
+          state: true,
+          output: 'B',
+      }, {
+          name: 9,
+          state: true,
+          output: 'K',
+      }];
+
+      config = [...config, {
+          name: 3,
+          state: true,
+          output: 'D',
+      }]
+      const newArr = config.reduce((item:any, next) => {
+          let hash = {};
+          next.state ? item.push(next): '';
+          return item
+      }, []);
+      console.log(newArr);
   }
   //私有方法
   private changeObj(obj:objValidate):void{
