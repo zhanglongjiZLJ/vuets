@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
+    <HomeComponents></HomeComponents>
     <HelloWorld @countAdd="countAdd($event)" :age="age" zlj="zlj" msg="Welcome to Your Vue.js + TypeScript App"/>
   </div>
 </template>
@@ -8,10 +9,12 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
+import HomeComponents from "@/components/home.vue";
 
 @Component({
   components: {
-    HelloWorld
+    HelloWorld,
+    HomeComponents
   }
 })
 export default class Home extends Vue {
