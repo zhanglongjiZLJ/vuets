@@ -1,6 +1,5 @@
 <template>
-    <div>home组件
-        <div>{{age}}</div>
+    <div>home组件{{age}}
     </div>
 </template>
 
