@@ -109,36 +109,36 @@ export default class HelloWorld extends Vue {
 
 
 
-      // let hash = {};
-      // let config = [{
-      //     name: 2,
-      //     state: true,
-      //     output: 'Y',
-      // }, {
-      //     name: 3,
-      //     state: false,
-      //     output: 'A',
-      // }, {
-      //     name: 5,
-      //     state: true,
-      //     output: 'S',
-      // }, {
-      //     name: 7,
-      //     state: true,
-      //     output: 'B',
-      // }];
-      //
-      // config = [...config, {
-      //     name: 3,
-      //     state: true,
-      //     output: 'D',
-      // }]
-      // const newArr = config.reduce((item, next) => {
-      //     hash[next.name] ? '' : next.state == true && item.push(next);
-      //     return item
-      // }, []);
-      //
-      // console.log(newArr);
+      let hash = {};
+      let config = [{
+          name: 2,
+          state: true,
+          output: 'Y',
+      }, {
+          name: 3,
+          state: false,
+          output: 'A',
+      }, {
+          name: 5,
+          state: true,
+          output: 'S',
+      }, {
+          name: 7,
+          state: true,
+          output: 'B',
+      }];
+
+      config = [...config, {
+          name: 3,
+          state: true,
+          output: 'D',
+      }]
+      const newArr = config.reduce((item:any, next) => {
+          next.state == true? item.push(next): '';
+          return item
+      }, []);
+
+      console.log(newArr);
   }
   //私有方法
   private changeObj(obj:objValidate):void{
