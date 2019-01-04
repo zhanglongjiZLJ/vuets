@@ -1,5 +1,5 @@
 <template>
-    <div>home组件{{age}}
+    <div>home组件{{age}}{{name}}
     </div>
 </template>
 
@@ -13,6 +13,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 export default class HomeComponents extends Vue {
     //接收父组件的参数
     @Prop(Number) age!: number;
+    @Prop(String) name!: string;
     //生命周期
     created(){
 

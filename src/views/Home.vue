@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HomeComponents :age="age" />
+    <HomeComponents :age="age" :name="name" />
     <HelloWorld @countAdd="countAdd($event)" :age="age" zlj="zlj" msg="Welcome to Your Vue.js + TypeScript App"/>
   </div>
 </template>
@@ -19,6 +19,7 @@ import HomeComponents from "@/components/HomeComponents.vue";
 })
 export default class Home extends Vue {
     age: number = 20
+    name: string = '张隆基'
     countAdd(val:void):void{
         console.log(val)
     }
