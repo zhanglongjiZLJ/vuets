@@ -151,12 +151,20 @@ export default class HelloWorld extends Vue {
           state: true,
           output: 'D',
       }]
-      const newArr = config.reduce((item:any, next) => {
+      const newArr = config.reduce((item:any, next):ItemObj[] => {
           let hash = {};
           next.state ? item.push(next): '';
           return item
       }, []);
+      newArr.sort(this.compare('name'))
       console.log(newArr);
+  }
+  private compare (props:string){
+    return (a:any,b:any):number => {
+        let temp1 = a[props]
+        let temp2 = b[props]
+        return temp1 - temp2;
+    }
   }
   //私有方法
   private changeObj(obj:objValidate):void{
