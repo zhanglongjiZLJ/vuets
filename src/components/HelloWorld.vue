@@ -140,6 +140,10 @@ export default class HelloWorld extends Vue {
           name: 10,
           state: true,
           output: 'M',
+      }, {
+          name: 11,
+          state: true,
+          output: 'O',
       }];
 
       config = [...config, {
