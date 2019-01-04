@@ -20,6 +20,10 @@ export default class HomeComponents extends Vue {
     }
     mounted(){
         console.log(this.age)
+        this.sum()
+    }
+    sum():void{
+        console.log(123123)
     }
 }
 </script>
